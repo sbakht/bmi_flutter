@@ -35,12 +35,10 @@ class _InputPageState extends State<InputPage> {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
-                              setState(() {
-                                activeGender = 1;
-                              });
+                              setState(activateMale);
                             },
                             child: MyCard(
-                              active: activeGender == 1,
+                              active: isMaleActive(),
                               child: GenderCard(
                                   icon: FontAwesomeIcons.mars, text: "MALE"),
                             ),
@@ -49,12 +47,10 @@ class _InputPageState extends State<InputPage> {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
-                              setState(() {
-                                activeGender = 2;
-                              });
+                              setState(activateFemale);
                             },
                             child: MyCard(
-                              active: activeGender == 2,
+                              active: isFemaleActive(),
                               child: GenderCard(
                                   icon: FontAwesomeIcons.venus, text: "FEMALE"),
                             ),
@@ -90,4 +86,16 @@ class _InputPageState extends State<InputPage> {
       ),
     );
   }
+
+  void activateFemale() {
+    activeGender = 2;
+  }
+
+  void activateMale() {
+    activeGender = 1;
+  }
+
+  bool isFemaleActive() => activeGender == 2;
+
+  bool isMaleActive() => activeGender == 1;
 }
