@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const submitButtonColor = 0xFFEB1555;
+import 'GenderCard.dart';
+import 'MyCard.dart';
+
+const submitButtonColor = Color(0xFFEB1555);
 
 class InputPage extends StatefulWidget {
   @override
@@ -8,6 +12,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  var activeGender = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,18 +32,44 @@ class _InputPageState extends State<InputPage> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Expanded(child: MyCard(active: false)),
-                        Expanded(child: MyCard(active: false)),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                activeGender = 1;
+                              });
+                            },
+                            child: MyCard(
+                              active: activeGender == 1,
+                              child: GenderCard(
+                                  icon: FontAwesomeIcons.mars, text: "MALE"),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                activeGender = 2;
+                              });
+                            },
+                            child: MyCard(
+                              active: activeGender == 2,
+                              child: GenderCard(
+                                  icon: FontAwesomeIcons.venus, text: "FEMALE"),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  Expanded(child: MyCard(active: false)),
+                  Expanded(child: MyCard(active: true)),
                   Expanded(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Expanded(child: MyCard(active: false)),
-                        Expanded(child: MyCard(active: false)),
+                        Expanded(child: MyCard(active: true)),
+                        Expanded(child: MyCard(active: true)),
                       ],
                     ),
                   ),
@@ -47,7 +79,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Container(
             margin: EdgeInsets.only(top: 10),
-            color: Color(submitButtonColor),
+            color: submitButtonColor,
             height: 70,
             child: Center(
               child: Text("CALCULATE"),
@@ -55,24 +87,6 @@ class _InputPageState extends State<InputPage> {
             width: double.infinity,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class MyCard extends StatelessWidget {
-  final bool active;
-
-  MyCard({this.active});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(4),
-      child: Card(
-        color: this.active ? Colors.blue : null,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        child: null,
       ),
     );
   }
