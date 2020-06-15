@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const submitButtonColor = 0xFFEB1555;
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -12,32 +14,47 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: Row(
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.all(10),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(child: MyCard(active: false)),
+                        Expanded(child: MyCard(active: false)),
+                      ],
+                    ),
+                  ),
                   Expanded(child: MyCard(active: false)),
-                  Expanded(child: MyCard(active: false)),
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(child: MyCard(active: false)),
+                        Expanded(child: MyCard(active: false)),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-            Expanded(child: MyCard(active: false)),
-            Expanded(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Expanded(child: MyCard(active: false)),
-                  Expanded(child: MyCard(active: false)),
-                ],
-              ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 10),
+            color: Color(submitButtonColor),
+            height: 70,
+            child: Center(
+              child: Text("CALCULATE"),
             ),
-          ],
-        ),
+            width: double.infinity,
+          ),
+        ],
       ),
     );
   }
