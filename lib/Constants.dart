@@ -12,3 +12,4 @@ const kNumberStyle = TextStyle(
 );
 const kInactiveColor = Color(0xFF111328);
 const kSubmitButtonColor = Color(0xFFEB1555);
+const kCardColor = Color(0xFF1D1E33);
