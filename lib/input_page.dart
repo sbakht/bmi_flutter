@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/Calculator.dart';
 import 'package:bmi_calculator/Constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -129,7 +130,8 @@ class _InputPageState extends State<InputPage> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/results');
+              Calculator calc = new Calculator(height: height, weight: weight);
+              Navigator.pushNamed(context, '/results', arguments: calc);
             },
             child: Container(
               margin: EdgeInsets.only(top: 10),
