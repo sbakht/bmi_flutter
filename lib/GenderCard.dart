@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'Constants.dart';
+
 const iconSize = 60.0;
 const spaceBetweenIconAndCaption = 20.0;
-const textStyle = TextStyle(
-  fontSize: 18,
-  color: Color(0xFF8D8E98),
-);
 
 class GenderCard extends StatelessWidget {
   final String text;
@@ -26,7 +24,7 @@ class GenderCard extends StatelessWidget {
           padding: const EdgeInsets.only(top: spaceBetweenIconAndCaption),
           child: Text(
             this.text,
-            style: textStyle,
+            style: kLabelStyle,
           ),
         ),
       ],

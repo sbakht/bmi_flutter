@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 
-const inactiveColor = Color(0xFF111328);
+import 'Constants.dart';
 
 class MyCard extends StatelessWidget {
   final bool active;
   final Widget child;
+  final Function onTap;
 
-  MyCard({this.active, this.child});
+  MyCard({this.active, this.child, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(4),
-      child: Card(
-        color: this.active ? null : inactiveColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        child: child,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(4),
+        child: Card(
+          color: this.active ? null : kInactiveColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          child: child,
+        ),
       ),
     );
   }
